@@ -352,7 +352,7 @@ public class VLCViewController: NSObject, FlutterPlatformView {
             }
             media = VLCMedia(url: url)
         }
-        media.addOptions(["--rtsp-tcp": true, "--codec":"avcodec", "--network-caching":500, "--avcodec-hw":"none", "--rtsp-mcast":true,])
+        media.addOptions(["--rtsp-tcp": true, "--codec":"avcodec", "--network-caching":500, "--avcodec-hw":"none", "--rtsp-mcast":true,"--miface":"en0"])
  
         // if(!options.isEmpty){
         //     for option in options {
