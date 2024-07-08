@@ -352,36 +352,36 @@ public class VLCViewController: NSObject, FlutterPlatformView {
             }
             media = VLCMedia(url: url)
         }
-        media.addOptions(["--rtsp-tcp": true, "--codec":"avcodec", "--network-caching":500, "--avcodec-hw":"none", "--rtsp-mcast":true,"--miface":"en0"])
+        // media.addOptions(["--rtsp-tcp": true, "--codec":"avcodec", "--network-caching":500, "--avcodec-hw":"none", "--rtsp-mcast":true,"--miface":"en0"])
  
-        // if(!options.isEmpty){
-        //     for option in options {
-        //         media.addOption(option)
-        //     }
-        // }
+        if(!options.isEmpty){
+            for option in options {
+                media.addOption(option)
+            }
+        }
         
-        // switch HWAccellerationType.init(rawValue: hwAcc)
-        // {
-        // case .HW_ACCELERATION_DISABLED:
-        //     media.addOption("--codec=avcodec")
-        //     break
+        switch HWAccellerationType.init(rawValue: hwAcc)
+        {
+        case .HW_ACCELERATION_DISABLED:
+            media.addOption("--codec=avcodec")
+            break
 
-        // case .HW_ACCELERATION_DECODING:
-        //     media.addOption("--codec=all")
-        //     media.addOption(":no-mediacodec-dr")
-        //     media.addOption(":no-omxil-dr")
-        //     break
+        case .HW_ACCELERATION_DECODING:
+            media.addOption("--codec=all")
+            media.addOption(":no-mediacodec-dr")
+            media.addOption(":no-omxil-dr")
+            break
 
-        // case .HW_ACCELERATION_FULL:
-        //     media.addOption("--codec=all")
-        //     break
+        case .HW_ACCELERATION_FULL:
+            media.addOption("--codec=all")
+            break
 
-        // case .HW_ACCELERATION_AUTOMATIC:
-        //     break
+        case .HW_ACCELERATION_AUTOMATIC:
+            break
 
-        // case .none:
-        //     break
-        // }
+        case .none:
+            break
+        }
         
         self.vlcMediaPlayer.media = media
 //        self.vlcMediaPlayer.media.parse(withOptions: VLCMediaParsingOptions(VLCMediaParseLocal | VLCMediaFetchLocal | VLCMediaParseNetwork | VLCMediaFetchNetwork))
